@@ -4,7 +4,7 @@
 Laravelのアウトプット学習の一環
 
 ## アプリケーションURL
-http://localhost/
+http://localhost/attendance
 
 ## 機能一覧
 ログイン・ログアウト機能、新規会員登録機能、出勤機能、休憩機能、退勤機能、勤怠一覧情報取得機能、勤怠詳細編集機能、修正申請機能、ユーザー情報取得機能、修正申請承認機能
@@ -33,7 +33,7 @@ http://localhost/
 - 5.composer require laravel/fortify(PHPコンテナ内・Fortifyのインストール)
 - 6.composer require laravel-lang/lang:~7.0 --dev（PHPコンテナ内・Laravelのインストール）
 - 7.cp -r ./vendor/laravel-lang/src/ja ./resources/lang/（PHPコンテナ内・会員登録および認証用の日本語ファイルの追加）
-- 8.Windows環境でhttp://localhost/attendanceにエラーでアクセスできない場合はターミナルでsudo chmod -R 777 src/*を実行する
+- 8.Windows環境で「http:.//localhost/attendance」にエラーでアクセスできない場合はターミナルでsudo chmod -R 777 src/*を実行する
 
 ## 使用技術(実行環境)
 - PHP 3.8
