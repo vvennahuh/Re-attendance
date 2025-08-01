@@ -1,0 +1,72 @@
+
+.attendance__container {
+    max-width: 600px;
+    margin: 80px auto;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.badge {
+    display: inline-block;
+    font-size: 14px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.badge--gray {
+    background-color: #ccc;
+    color: #333;
+}
+
+.badge--black {
+    background-color: #000;
+    color: #fff;
+}
+
+.attendance__date {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.attendance__time {
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.attendance__message {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.btn {
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    padding: 12px 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.2s;
+}
+
+.btn--black {
+    background-color: #000;
+    color: #fff;
+}
+
+.btn--black:hover {
+    opacity: 0.8;
+}
+
+.btn--white {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+}
+
+.btn--white:hover {
+    opacity: 0.8;
+}

@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Attendance;
-use App\Models\Rest;
+use App\Models\ModificationRequest;
 
-class RestsTableSeeder extends Seeder
+class ModificationRequestsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +16,8 @@ class RestsTableSeeder extends Seeder
     public function run()
     {
         Attendance::all()->each(function ($attendance) {
-            Rest::factory(2)->create([
+            ModificationRequest::factory()->create([
+                'user_id' => $attendance->user_id,
                 'attendance_id' => $attendance->id,
             ]);
         });//

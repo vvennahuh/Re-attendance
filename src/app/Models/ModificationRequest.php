@@ -6,20 +6,28 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Rest extends Model
+class ModificationRequest extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'start_time',
-        'end_time',
+        'user_id',
         'attendance_id',
+        'reason',
+        'status',
+        'submitted_at',
+        'approved_at',
     ];
 
     protected $casts = [
-            'start_time' => 'time',
-            'end_time' => 'time',
+        'submitted_at' => 'datetime',
+        'approved_at' => 'datetime',
     ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function attendance(): BelongsTo
     {
