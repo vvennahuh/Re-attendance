@@ -1,5 +1,4 @@
 # Re-attendance
-<img width="1512" height="982" alt="勤怠登録画面_出勤前（一般ユーザー）" src="https://github.com/user-attachments/assets/7e532c88-8fd9-4b0c-932f-0d89d2bd9d90" />
 
 ## 作成目的
 Laravelのアウトプット学習の一環
