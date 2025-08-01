@@ -33,6 +33,7 @@ http://localhost/
 - 5.composer require laravel/fortify(PHPコンテナ内・Fortifyのインストール)
 - 6.composer require laravel-lang/lang:~7.0 --dev（PHPコンテナ内・Laravelのインストール）
 - 7.cp -r ./vendor/laravel-lang/src/ja ./resources/lang/（PHPコンテナ内・会員登録および認証用の日本語ファイルの追加）
+- 8.Windows環境でhttp://localhost/attendanceにエラーでアクセスできない場合はターミナルでsudo chmod -R 777 src/*を実行する
 
 ## 使用技術(実行環境)
 - PHP 3.8
