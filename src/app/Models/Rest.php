@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Rest extends Model
 {
@@ -16,12 +15,7 @@ class Rest extends Model
         'attendance_id',
     ];
 
-    protected $casts = [
-            'start_time' => 'time',
-            'end_time' => 'time',
-    ];
-
-    public function attendance(): BelongsTo
+    public function attendance()
     {
         return $this->belongsTo(Attendance::class);
     }

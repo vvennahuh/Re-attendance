@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Attendance;
+use Carbon\Carbon;
 
 class RestFactory extends Factory
 {
@@ -14,10 +14,12 @@ class RestFactory extends Factory
      */
     public function definition()
     {
+        $start = Carbon::today()->setTime(0,0,0);
+        $end   = $start->copy()->addMinutes(60);
+        
         return [
-            'start_time' => $this->faker->time('H:i:s'),
-            'end_time' => $this->faker->time('H:i:s'),
-            'attendance_id' => Attendance::inRandomOrder()->first()?->id ?? Attendance::factory()//
+            'start_time' => $start->format('H:i:s'),
+            'end_time'   => $end->format('H:i:s'),
         ];
     }
 }

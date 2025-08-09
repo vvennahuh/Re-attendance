@@ -3,11 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\User;
-use App\Models\Attendance;
-
+use App\Models\ModificationRequest;
+use Carbon\Carbon;
 class ModificationRequestFactory extends Factory
 {
+    protected $model = ModificationRequest::class;
     /**
      * Define the model's default state.
      *
@@ -15,13 +15,23 @@ class ModificationRequestFactory extends Factory
      */
     public function definition()
     {
+        $submitted = Carbon::instance(
+            $this->faker->dateTimeBetween('-3 years', 'now')
+        );
+
+        $status = $this->faker->randomElement(['pending', 'approved', 'rejected']);
+        $approvedAt = $status === 'approved'
+            ? $submitted->copy()
+            ->addDays($this->faker->numberBetween(0, 14))
+            ->addHours($this->faker->numberBetween(0, 23))
+            ->addMinutes($this->faker->numberBetween(0, 59))
+            : null;
+        
         return [
-            'user_id' => User::inRandomOrder()->first()?->id ?? User::factory(),
-            'attendance_id' => Attendance::inRandomOrder()->first()?->id ?? Attendance::factory(),
-            'reason' => $this->faker->sentence,
-            'status' => $this->faker->randomElement(['pending', 'approved', 'rejected']),
-            'submitted_at' => now(),
-            'approved_at' => $this->faker->optional()->dateTime,//
+            'reason'       => $this->faker->sentence(),
+            'status'       => $status,
+            'submitted_at' => $submitted,
+            'approved_at'  => $approvedAt,
         ];
     }
 }

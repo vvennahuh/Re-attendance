@@ -3,10 +3,12 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\User;
+use App\Models\Attendance;
+use Carbon\Carbon;
 
 class AttendanceFactory extends Factory
 {
+    protected $model = Attendance::class;
     /**
      * Define the model's default state.
      *
@@ -14,12 +16,16 @@ class AttendanceFactory extends Factory
      */
     public function definition()
     {
+        $startHour   = $this->faker->numberBetween(8, 12);
+        $startMinute = $this->faker->randomElement([0, 15, 30, 45]);
+        $start = Carbon::today()->setTime($startHour, $startMinute, 0);
+        $end = (clone $start)->addHours(8);
+        
         return [
-            'start_time' => $this->faker->time('H:i:s'),
-            'end_time' => $this->faker->time('H:i:s'),
-            'note' => $this->faker->optional()->sentence,
-            'work_date' => $this->faker->date,
-            'user_id' => User::inRandomOrder()->first()?->id ?? User::factory(),//
+            'work_date'  => $start->toDateString(),
+            'start_time' => $start->format('H:i:s'),
+            'end_time'   => $end->format('H:i:s'),
+            'note'       => $this->faker->optional()->sentence(),
         ];
     }
 }

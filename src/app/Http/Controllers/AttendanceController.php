@@ -12,6 +12,7 @@ class AttendanceController extends Controller
 {
     public function index()
     {
+
         $user = Auth::user();
         $today = Carbon::today();
 
