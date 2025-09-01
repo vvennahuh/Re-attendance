@@ -10,38 +10,64 @@
 </head>
 
 <body>
-    <header class="header">
-        <div class="header__inner">
-            <div class="header__logo">
-                <img src="{{ asset('img/coachtech.png') }}" alt="COACHTECH">
-            </div>
-            <nav class="header__nav">
-                @auth
-                @if(Auth::user()->is_admin)
-                <a href="{{ route('admin.attendance.index') }}">勤怠一覧</a>
-                <a href="{{ route('admin.staff.index') }}">スタッフ一覧</a>
-                <a href="{{ route('admin.request.index') }}">申請一覧</a>
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" class="header__logout">ログアウト</button>
-                </form>
-                @else
-                <a href="{{ route('attendance.index') }}">勤怠</a>
-                <a href="{{ route('attendance.list') }}">勤怠一覧</a>
-                <a href="{{ route('request.index') }}">申請</a>
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" class="header__logout">ログアウト</button>
-                </form>
-                @endif
-                @endauth
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="{{ url('/attendance') }}" class="logo">
+                <img src="{{ asset('img/coachtech.png') }}" alt="COACHTECH" />
+            </a>
+
+            @auth
+            <nav class="global-nav" aria-label="グローバルナビゲーション">
+                <ul>
+                    @if(!$isAdmin)
+                    <li>
+                        <a class="{{ request()->routeIs('user.attendance.index') ? 'is-active' : '' }}"
+                            href="{{ route('user.attendance.index') }}">勤怠</a>
+                    </li>
+                    <li>
+                        <a class="{{ request()->routeIs('user.attendances.*') ? 'is-active' : '' }}"
+                            href="{{ route('user.attendances.index') }}">勤怠一覧</a>
+                    </li>
+                    <li>
+                        <a class="{{ request()->routeIs('user.requests.*') ? 'is-active' : '' }}"
+                            href="{{ route('user.requests.index') }}">申請</a>
+                    </li>
+                    <li>
+                        <form class="logout-form" method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit">ログアウト</button>
+                        </form>
+                    </li>
+                    @else
+                    <li>
+                        <a class="{{ request()->routeIs('admin.attendances.*') ? 'is-active' : '' }}"
+                            href="{{ route('admin.attendances.index') }}">勤怠一覧</a>
+                    </li>
+                    <li>
+                        <a class="{{ request()->routeIs('admin.staff.*') ? 'is-active' : '' }}"
+                            href="{{ route('admin.staff.index') }}">スタッフ一覧</a>
+                    </li>
+                    <li>
+                        <a class="{{ request()->routeIs('admin.requests.*') ? 'is-active' : '' }}"
+                            href="{{ route('admin.requests.index') }}">申請一覧</a>
+                    </li>
+                    <li>
+                        <form class="logout-form" method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit">ログアウト</button>
+                        </form>
+                    </li>
+                    @endif
+                </ul>
             </nav>
+            @endauth
         </div>
     </header>
 
-    <main class="main">
-        @yield('content')
-    </main>
+<main class="main">
+    @yield('content')
+</main>
+
 </body>
 
 </html>

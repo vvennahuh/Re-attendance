@@ -7,35 +7,30 @@
 @endsection
 
 @section('content')
-<div class="login-container">
-    <h2 class="login-title">ログイン</h2>
-
+<div class="login-wrap">
+    <h1 class="login-title">ログイン</h1>
     <form method="POST" action="{{ route('login') }}" class="login-form">
         @csrf
-
         <div class="form-group">
-            <label for="email">メールアドレス</label>
-            <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
+            <label class="form-label">メールアドレス</label>
+            <input class="form-input" type="email" name="email" value="{{ old('email') }}" required>
             @error('email')
-            <p class="error-message">{{ $message }}</p>
+            <p class="form-error">{{ $message }}</p>
             @enderror
         </div>
-
         <div class="form-group">
-            <label for="password">パスワード</label>
-            <input id="password" type="password" name="password" required>
+            <label class="form-label">パスワード</label>
+            <input class="form-input" type="password" name="password" required>
             @error('password')
-            <p class="error-message">{{ $message }}</p>
+            <p class="form-error">{{ $message }}</p>
             @enderror
         </div>
-
-        <div class="form-submit">
-            <button type="submit">ログインする</button>
+        <div class="form-action">
+            <button type="submit" class="login_button">ログインする</button>
+        </div>
+        <div class="auth-links">
+            <a href="{{ route('register') }}">会員登録はこちら</a>
         </div>
     </form>
-
-    <div class="register-link">
-        <a href="{{ route('register') }}">会員登録はこちら</a>
-    </div>
 </div>
 @endsection
