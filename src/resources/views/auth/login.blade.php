@@ -9,7 +9,7 @@
 @section('content')
 <div class="login-wrap">
     <h1 class="login-title">ログイン</h1>
-    <form method="POST" action="{{ route('login') }}" class="login-form">
+    <form method="POST" action="{{ route('auth.login.store') }}" class="login-form">
         @csrf
         <div class="form-group">
             <label class="form-label">メールアドレス</label>
@@ -25,9 +25,11 @@
             <p class="form-error">{{ $message }}</p>
             @enderror
         </div>
-        <div class="form-action">
-            <button type="submit" class="login_button">ログインする</button>
-        </div>
+
+        <button type="submit" class="login_button">
+            <span class="login_button__text">ログインする</span>
+        </button>
+
         <div class="auth-links">
             <a href="{{ route('register') }}">会員登録はこちら</a>
         </div>

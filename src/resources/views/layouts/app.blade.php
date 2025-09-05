@@ -10,14 +10,14 @@
 </head>
 
 <body>
-    <header class="site-header">
-        <div class="container header-inner">
+    <header class="header-wrap">
+        <div class="header-inner">
             <a href="{{ url('/attendance') }}" class="logo">
-                <img src="{{ asset('img/coachtech.png') }}" alt="COACHTECH" />
+                <img src="{{ asset('img/COACHTECH.png') }}" alt="COACHTECH" />
             </a>
 
             @auth
-            <nav class="global-nav" aria-label="グローバルナビゲーション">
+            <nav class="global-nav">
                 <ul>
                     @if(!$isAdmin)
                     <li>
